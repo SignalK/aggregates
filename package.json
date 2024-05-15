@@ -1,0 +1,45 @@
+{
+  "name": "@signalk/aggregates",
+  "version": "1.0.0",
+  "description": "Plugin to compute aggregates (mean, min, max)",
+  "main": "index.js",
+  "keywords": [
+    "signalk-node-server-plugin"
+  ],
+  "author": "Teppo Kurki <teppo.kurki@iki.fi>",
+  "repository": "https://github.com/tkurki/sk-aggregates",
+  "scripts": {
+    "test": "npm run mocha",
+    "mocha": "mocha --require ts-node/register --extensions ts src/*.test.ts --timeout 5000 --exit",
+    "lint:only": "eslint src --ext .ts",
+    "prettier": "prettier -w src/",
+    "lint": "eslint -c .eslintrc.js --ext .ts --ext .js --fix src/",
+    "format": "npm run prettier && npm run lint",
+    "ci-lint": "eslint -c .eslintrc.js --ext .ts --ext .js src/ && prettier --check src/",
+    "generate-schema": "./generate-schema >dist/PluginConfig.json",
+    "build": "tsc && npm run generate-schema",
+    "prepublishOnly": "npm install && npm run build"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@signalk/server-api": "^2.3.0",
+    "@types/chai": "^4.3.3",
+    "@types/express": "^4.17.17",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.6",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "chai": "^4.3.6",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "json-schema-ref-parser": "^9.0.9",
+    "mocha": "^10.0.0",
+    "prettier": "^2.8.4",
+    "ts-node": "^10.9.1",
+    "typescript-json-schema": "^0.54.0"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.1"
+  }
+}
